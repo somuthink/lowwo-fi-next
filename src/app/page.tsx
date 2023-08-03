@@ -1,9 +1,34 @@
-import Image from 'next/image'
-
+import Image from "next/image";
+import { SoundCard } from "@/components/SoundCard";
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
+    <main className="flex ">
+      <SoundCard
+        title="AAAAA"
+        description="JJJJJJJJ"
+        imageSrc="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0d4f4a59530621.5a6b839aa4214.jpg"
+        soundSrc="k"
+        backgroundSrc="https://res.cloudinary.com/dr7hfsbzr/video/upload/f_auto:video,q_auto/v1/backgrounds/mapoo3yhqbj5cb7vjhma"
+      />
+      <div className="Card inline-flex items-center gap-7 px-2 py-2 flex-wrap h-px-140 min-w-px-47 rounded-3xl bg-slate-400">
+        <div className="TextContainer flex flex-col items-start flex-none order-1 flex-grow gap-1">
+          <h2 className="Title texts font-semibold text-2xl ">Card Title</h2>
+          <p className="Description texts font-normal text-1rem">
+            Card Description
+          </p>
+        </div>
+
+        {/* Card image */}
+        <Image
+          src={"https://www.nawpic.com/media/2020/mushroom-phone-nawpic.jpg"}
+          width={100}
+          height={100}
+          className="img rounded-full"
+          alt="Picture of the author"
+        ></Image>
+      </div>
+
+      {/* <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
           <code className="font-mono font-bold">src/app/page.tsx</code>
@@ -107,7 +132,7 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
-      </div>
+      </div> */}
     </main>
-  )
+  );
 }
