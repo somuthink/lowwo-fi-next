@@ -9,6 +9,8 @@ import { CardProps } from "@/interfaces/CardProps";
 
 export const Player = ({ cards }: { cards: CardProps[] }) => {
 
+    console.log(process.env.NEXT_PUBLIC_NOTION_TOKEN);
+
     const [link, setLink] = useState("");
 
 
