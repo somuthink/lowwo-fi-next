@@ -6,6 +6,8 @@ import { SoundCard } from "./SoundCard";
 import { CardProps } from "@/interfaces/CardProps";
 
 export const MotionCarousel = ({ cards }: { cards: CardProps[] }) => {
+
+  
   // State to store the width of the carousel content
   const [width, setWidth] = useState(0);
 
@@ -14,6 +16,7 @@ export const MotionCarousel = ({ cards }: { cards: CardProps[] }) => {
 
   // Calculate and set the width of the carousel content on mount
   useEffect(() => {
+    console.log(cards);
     setWidth(
       slider_wrapper.current!.scrollWidth - slider_wrapper.current!.offsetWidth
     );
