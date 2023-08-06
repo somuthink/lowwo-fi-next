@@ -3,16 +3,11 @@
 import React, { useState, useRef, useEffect, useContext, memo } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { CardProps } from "@/interfaces/CardProps";
 import MyGlobalContext from "@/contexts/linkContext";
 
 
-export interface CardProps {
-  title: string;
-  description: string;
-  imageSrc: string;
-  soundSrc: string;
-  backgroundSrc: string;
-}
+
 
 export const SoundCard = ({
   title,
@@ -45,8 +40,6 @@ export const SoundCard = ({
       audioRef.current.volume = 0.4;
     }
 
-    console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
-
   }, []);
 
   // Play/Pause audio function
@@ -59,7 +52,7 @@ export const SoundCard = ({
       audioRef.current!.pause();
       changeAudioStatus(false);
       if (link === backgroundSrc) {
-        setLink(process.env.PUBLIC_URL + "video/chill-room.mp4");
+        setLink("");
       }
     }
   };
@@ -142,10 +135,10 @@ export const SoundCard = ({
   };
 
   return (
-    <motion.div
-      onMouseEnter={() => {setHover(true);document.body.style.overflow = 'hidden';}}
-      onMouseLeave={() => {setHover(false);document.body.style.overflow = 'auto';}}
-      className="inline-flex flex-col"
+    <div
+      onMouseEnter={() => {setHover(true)}}
+      onMouseLeave={() => {setHover(false)}}
+      className="flex-col "
     >
       {/* Range Input */}
       <motion.div
@@ -167,12 +160,11 @@ export const SoundCard = ({
       </motion.div>
 
 
-
       {/* Sound Card */}
       <motion.div
         className="bg-black bg-opacity-40 backdrop-blur-[11px] 
                     rounded-[25px] border-2 border-solid border-[rgba(255,255,255,0.1)] 
-                    inline-flex  py-[9px] pl-[18px] items-center gap-x-5 gap-y-6 h-[140px] min-w-[400px]"
+                    inline-flex  py-[9px] px-[18px] items-center gap-x-5 gap-y-6 h-[140px] min-w-[400px] max-w-[415px] mt-1 mb-10"
         onWheel={wheel}
         variants={Animations.Container}
         animate={"show"}
@@ -194,7 +186,7 @@ export const SoundCard = ({
         </div>
         <audio ref={audioRef} loop src={soundSrc} />
         <Image
-          className="rounded-full w-[100px] h-[100px]"
+          className=" min-w-[100px] h-[100px] rounded-[50%]"
           width={100}
           height={100}
           src={imageSrc}
@@ -203,7 +195,7 @@ export const SoundCard = ({
           loading="lazy"
         />
       </motion.div>
-    </motion.div>
+    </div>
   );
 
 };

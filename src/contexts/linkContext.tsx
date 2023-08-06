@@ -8,6 +8,6 @@ export interface GlobalContent {
 }
 
 const MyGlobalContext = createContext<GlobalContent>({
-  link: (process.env.PUBLIC_URL + "video/chill-room.mp4"), // set a default value
+  link: (""), // set a default value
   setLink: () => {},});
 export default MyGlobalContext

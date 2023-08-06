@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+
+  box-sizing: border-box;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,6 +24,7 @@
 
 
 body {
+  overflow: hidden;
   width: 100%;
   height: 100%;
   color: rgb(var(--foreground-rgb));
@@ -35,7 +42,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-
   height: 30px;
 
   padding: 0px 8px;
@@ -75,9 +81,6 @@ body {
   }
   
   input[type="range"]::-moz-range-track {
-    background-color: rgba(0, 0, 0, 0);
-    border-radius: 0.5rem;
-    height: 0.5rem;
   }
   
   input[type="range"]::-moz-range-thumb {
