@@ -60,3 +60,9 @@ export const getCards = async ()  => {
     return [];
   }
 };
+
+
+export const netlyTest = async ()  => {
+
+  return "hello"
+}
