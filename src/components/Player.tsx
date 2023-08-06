@@ -7,10 +7,10 @@ import { BackgroundVideoComponent } from "./Background";
 import MyGlobalContext from "@/contexts/linkContext";
 import { CardProps } from "@/interfaces/CardProps";
 
-export const Player = ({ cards, netlyTest }: { cards: CardProps[], netlyTest : Promise<string> }) => {
+export const Player = ({ cards }: { cards: CardProps[] }) => {
 
     const [link, setLink] = useState("");
-    console.log(netlyTest);
+
 
     return (
  

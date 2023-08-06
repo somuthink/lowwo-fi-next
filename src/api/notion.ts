@@ -61,8 +61,3 @@ export const getCards = async ()  => {
   }
 };
 
-
-export const netlyTest = async ()  => {
-
-  return "hello"
-}

@@ -1,7 +1,7 @@
 import { GetStaticProps, InferGetStaticPropsType } from 'next'
 
 
-import { getCards, netlyTest} from "@/api/notion"
+import { getCards } from "@/api/notion"
 import { Player } from "@/components/Player";
 import { CardProps } from "@/interfaces/CardProps";
 
@@ -19,7 +19,6 @@ export default async function Home() {
 
   const cards = await getCards()
 
-  const netly = netlyTest()
 
   console.log(cards)
 
@@ -28,7 +27,7 @@ export default async function Home() {
 
     <main className="">
 
-    <Player cards={cards} netlyTest={netly} />
+    <Player cards={cards} />
       
 
 
