@@ -1,12 +1,11 @@
 "use client";
 
-
 import React, { useRef, useState } from "react";
-import Script from 'next/script'
+import Script from "next/script";
 import { motion } from "framer-motion";
 import { BsCollectionFill } from "react-icons/bs";
 import { MdOutlinePlaylistPlay } from "react-icons/md";
-import Slider from "react-slick"
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -55,7 +54,6 @@ export const MusicWidgets = () => {
   const setVolume = (volume: number) => {
     soundCloudRefs.current = soundCloudRefs.current.slice(-NumOfPlaylists);
 
-
     soundCloudRefs.current.forEach((ref) => {
       const widget = (window as any).SC.Widget(ref);
       widget.setVolume(volume);
@@ -71,8 +69,10 @@ export const MusicWidgets = () => {
 
   return (
     <div className="flex flex-col max-w-[1110px] w-[70%] h-[40%] gap-[3px] mx-[30px]">
-
-      <script id="soundcloud-script" src="https://w.soundcloud.com/player/api.js"></script>
+      <Script
+        id="soundcloud-script"
+        src="https://w.soundcloud.com/player/api.js"
+      ></Script>
       {/* Music mode: collection */}
       {mode === "collection" && (
         <Slider {...settings}>
@@ -82,20 +82,14 @@ export const MusicWidgets = () => {
             height="400"
             width="300"
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1234281943&color=%23383c9f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-          >
-
-          </iframe>
+          ></iframe>
           <iframe // Provide a unique key for each iframe
             ref={handleWidgetRef}
             className="soundcloud"
             height="400"
             width="300"
             src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1234281943&color=%23383c9f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-          >
-
-          </iframe>
-
-          
+          ></iframe>
         </Slider>
       )}
 

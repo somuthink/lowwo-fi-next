@@ -16,12 +16,14 @@ export const Player = ({ cards }: { cards: CardProps[] }) => {
     return (
  
     <MyGlobalContext.Provider value={{link,setLink}}>
+        <div className="flex flex-col gap-1 mt-[5%]">
+            <BackgroundVideoComponent />
+
+            <MusicWidgets/>
+
+            <MotionCarousel cards={cards}/>
+        </div>
         
-        <BackgroundVideoComponent />
-
-        <MusicWidgets/>
-
-        <MotionCarousel cards={cards}/>
     </MyGlobalContext.Provider>
 
 
