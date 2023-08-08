@@ -4,12 +4,11 @@ import { useState } from "react";
 
 import { MotionCarousel } from "./MotionCarousel";
 import { BackgroundVideoComponent } from "./Background";
+import { MusicWidgets } from "./MusicWidgets";
 import MyGlobalContext from "@/contexts/linkContext";
 import { CardProps } from "@/interfaces/CardProps";
 
 export const Player = ({ cards }: { cards: CardProps[] }) => {
-
-    console.log(process.env.NEXT_PUBLIC_NOTION_TOKEN);
 
     const [link, setLink] = useState("");
 
@@ -19,6 +18,8 @@ export const Player = ({ cards }: { cards: CardProps[] }) => {
     <MyGlobalContext.Provider value={{link,setLink}}>
         
         <BackgroundVideoComponent />
+
+        <MusicWidgets/>
 
         <MotionCarousel cards={cards}/>
     </MyGlobalContext.Provider>
