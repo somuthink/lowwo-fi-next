@@ -6,12 +6,6 @@ import { Player } from "@/components/Player";
 import { CardProps } from "@/interfaces/CardProps";
 
 
-interface Props {
- res: CardProps[];
-}
-
-
-
 
 
 

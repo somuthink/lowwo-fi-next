@@ -174,7 +174,7 @@ export const SoundCard = ({
         <div className=" flex flex-col items-start  order-1 flex-grow">
           <motion.p
             key={vol}
-            className="font-montserrat font-semibold text-xl"
+            className="font-montserrat font-semibold text-xl text-white"
             variants={Animations.Title}
             animate={"show"}
             initial="hide"
@@ -182,7 +182,7 @@ export const SoundCard = ({
           >
             {changeTitle()}
           </motion.p>
-          <p className="font-montserrat font-regular text-sm">{description}</p>
+          <p className="font-montserrat font-regular text-sm text-white">{description}</p>
         </div>
         <audio ref={audioRef} loop src={soundSrc} />
         <Image
