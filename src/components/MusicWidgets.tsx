@@ -5,11 +5,13 @@ import Script from "next/script";
 import { motion } from "framer-motion";
 import { BsCollectionFill } from "react-icons/bs";
 import { MdOutlinePlaylistPlay } from "react-icons/md";
+import { PlaylistProps } from "@/interfaces/Props";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const MusicWidgets = () => {
+
+export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
   // Slider settings
 
   // State for mode (collection or custom)
@@ -76,20 +78,17 @@ export const MusicWidgets = () => {
       {/* Music mode: collection */}
       {mode === "collection" && (
         <Slider {...settings}>
-          <iframe // Provide a unique key for each iframe
-            ref={handleWidgetRef}
-            className="soundcloud"
-            height="400"
-            width="300"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1234281943&color=%23383c9f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-          ></iframe>
-          <iframe // Provide a unique key for each iframe
-            ref={handleWidgetRef}
-            className="soundcloud"
-            height="400"
-            width="300"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1234281943&color=%23383c9f&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"
-          ></iframe>
+          {playlists.map((playlist , id) => (
+            <iframe // Provide a unique key for each iframe
+              key = {id}
+              ref={handleWidgetRef}
+              className="soundcloud"
+              height="400"
+              width="300"
+              src={playlist.link}
+              loading="lazy"
+            >{playlist.title}</iframe>
+          ))}
         </Slider>
       )}
 

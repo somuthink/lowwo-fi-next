@@ -2,8 +2,9 @@
 
 import React, { useState, useRef, useEffect, useContext, memo } from "react";
 import { motion } from "framer-motion";
+
 import Image from "next/image";
-import { CardProps } from "@/interfaces/CardProps";
+import { CardProps } from "@/interfaces/Props";
 import MyGlobalContext from "@/contexts/linkContext";
 
 

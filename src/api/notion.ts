@@ -1,18 +1,20 @@
+import { cache } from 'react'
+
 import { Client } from "@notionhq/client";
 import {
   QueryDatabaseResponse,
   DatabaseObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
-import { CardProps } from "@/interfaces/CardProps";
-
+import { CardProps, PlaylistProps } from "@/interfaces/Props";
 const notion = new Client({
   auth: process.env.NEXT_PUBLIC_NOTION_TOKEN,
 });
 
-const databaseId = process.env.NEXT_PUBLIC_NOTION_DATABASE_ID;
+
 
 export const getCards = async ()  => {
 
+  const databaseId = process.env.NEXT_PUBLIC_NOTION_CARDS_DATABASE_ID;
   interface properties {
     Sound_src: { url: string };
     Status: { status: { name: string } };
@@ -23,7 +25,6 @@ export const getCards = async ()  => {
   }
 
   const normalize = (item: DatabaseObjectResponse) => {
-
     const prop: properties = item.properties as any;
 
     if (prop.Status.status.name !== "Ready") {
@@ -61,3 +62,46 @@ export const getCards = async ()  => {
   }
 };
 
+export const getPlaylists = async ()  => {
+
+  const databaseId = process.env.NEXT_PUBLIC_NOTION_PLAYLISTS_DATABASE_ID;
+
+  interface properties {
+    Status: { status: { name: string } };
+    Link: { url: string };
+    Title: { title: { plain_text: string }[] };
+  }
+
+  const normalize = (item: DatabaseObjectResponse) => {
+    const prop: properties = item.properties as any;
+
+    if (prop.Status.status.name !== "Ready") {
+      return null;
+    }
+
+    const result : PlaylistProps = {
+      title: prop.Title.title[0].plain_text,
+      link: prop.Link.url,
+    }
+
+    return result;
+  };
+
+  try {
+
+
+    const response: QueryDatabaseResponse = await notion.databases.query({
+      database_id: `${databaseId}`,
+    });
+
+    const items: PlaylistProps[] = response.results
+      .map((item) => normalize(item as DatabaseObjectResponse))
+      .filter((item) => item !== null) as PlaylistProps[];
+
+    return items;
+
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};

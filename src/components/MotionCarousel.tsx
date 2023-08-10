@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { SoundCard } from "./SoundCard";
-import { CardProps } from "@/interfaces/CardProps";
+import { CardProps } from "@/interfaces/Props";
 
 export const MotionCarousel = ({ cards }: { cards: CardProps[] }) => {
 
@@ -35,9 +35,9 @@ export const MotionCarousel = ({ cards }: { cards: CardProps[] }) => {
           dragElastic={0.1}
         >
 
-            {cards.map(card => (
+            {cards.map((card , id) => (
                     <SoundCard
-                        key={card.title}
+                        key={id}
                         title={card.title}  
                         description={card.description} 
                         imageSrc={card.imageSrc}

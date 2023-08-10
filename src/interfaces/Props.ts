@@ -5,3 +5,8 @@ export interface CardProps {
     soundSrc: string;
     backgroundSrc: string;
   }
+
+  export interface PlaylistProps {
+    title: string;
+    link: string;
+  }
