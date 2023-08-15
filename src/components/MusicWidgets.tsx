@@ -10,18 +10,17 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
   // Slider settings
 
   // State for mode (collection or custom)
-  const [mode, setMode] = useState<string>("collection");
+  const [mode, setMode] = useState<"collection" | "custom">("collection");
 
   // Refs for SoundCloud iframes
   const soundCloudRefs = useRef<HTMLIFrameElement[]>([]);
 
   // Number of SoundCloud playlists
-  const NumOfPlaylists = 1;
+  const NumOfPlaylists = playlists.length;
 
   const settings = {
     dots: false,
@@ -70,26 +69,37 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
   };
 
   return (
-    <div className="flex flex-col max-w-[1110px] w-[70%] h-[40%] gap-[3px] mx-[30px]">
+    <div className="flex flex-col max-w-[1110px] w-[70%] max-sm:w-[90%] h-[40%] gap-2 mx-[30px]">
       <Script
+        async
         id="soundcloud-script"
         src="https://w.soundcloud.com/player/api.js"
+        strategy="afterInteractive"
       ></Script>
       {/* Music mode: collection */}
       {mode === "collection" && (
         <Slider {...settings}>
-          {playlists.map((playlist , id) => (
+          {playlists.map((playlist, id) => (
             <iframe // Provide a unique key for each iframe
-              key = {id}
+              key={id}
               ref={handleWidgetRef}
               className="soundcloud"
               height="400"
               width="300"
               src={playlist.link}
               loading="lazy"
-            >{playlist.title}</iframe>
+            >
+              {playlist.title}
+            </iframe>
           ))}
         </Slider>
+      )}
+
+      {mode === "custom" && (
+        <div className="flex content-center items-center justify-center h-[438px] w-2/4">
+
+          <p className=" text-white"> Work in progress 🚧 </p>
+        </div>
       )}
 
       {/* Music mode buttons */}
@@ -134,7 +144,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           whileTap={{ scale: 0.87 }}
           whileHover={{ y: 4 }}
           transition={{ duration: 0.3 }}
-          onClick={() => setMode("CUSTOM")}
+          onClick={() => setMode("custom")}
         >
           <MdOutlinePlaylistPlay size={18} color="white" />
         </motion.div>

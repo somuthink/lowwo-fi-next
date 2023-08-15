@@ -17,7 +17,7 @@ export default async function Home() {
   return (
 
 
-    <main className="">
+    <main className="overflow-hidden">
 
     <Player cards={cards} playlists ={playlists} />
     

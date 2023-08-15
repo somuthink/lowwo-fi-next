@@ -1,9 +1,8 @@
 "use client";
 
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useContext } from "react";
 import { motion, easeInOut } from "framer-motion";
 import MyGlobalContext from "@/contexts/linkContext";
-
 
 export const BackgroundVideoComponent = () => {
   const { link, setLink } = useContext(MyGlobalContext);

@@ -185,7 +185,7 @@ export const SoundCard = ({
           </motion.p>
           <p className="font-montserrat font-regular text-sm text-white">{description}</p>
         </div>
-        <audio ref={audioRef} loop src={soundSrc} />
+        <audio ref={audioRef} loop  src={soundSrc} />
         <Image
           className=" min-w-[100px] h-[100px] rounded-[50%]"
           width={100}
