@@ -22,14 +22,14 @@ export const MotionCarousel = ({ cards }: { cards: CardProps[] }) => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full m-0 p-0 box-border ">
+    <div className="box-border flex items-center justify-center w-full p-0 m-0 ">
       <motion.div
-        className="flex w-full p-5 overflow-hidden box-border"
+        className="box-border flex w-full p-5 overflow-hidden"
         ref={slider_wrapper}
         whileTap={{ cursor: "grabbing" }}
       >
         <motion.div
-          className="w-full inline-flex gap-4"
+          className="inline-flex w-full gap-4"
           drag="x"
           dragConstraints={{ right: 0, left: -width }}
           dragElastic={0.1}

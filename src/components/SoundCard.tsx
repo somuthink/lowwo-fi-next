@@ -137,8 +137,7 @@ export const SoundCard = ({
 
   return (
     <div
-      onMouseEnter={() => {setHover(true)}}
-      onMouseLeave={() => {setHover(false)}}
+      onClick={() => {setHover(!hover)}}
       className="flex-col "
     >
       {/* Range Input */}
@@ -172,10 +171,10 @@ export const SoundCard = ({
         initial={"hide"}
         transition={{}}
       >
-        <div className=" flex flex-col items-start  order-1 flex-grow">
+        <div className="flex flex-col items-start flex-grow order-2 ">
           <motion.p
             key={vol}
-            className="font-montserrat font-semibold text-xl text-white"
+            className="text-xl font-semibold text-white font-montserrat"
             variants={Animations.Title}
             animate={"show"}
             initial="hide"
@@ -183,9 +182,11 @@ export const SoundCard = ({
           >
             {changeTitle()}
           </motion.p>
-          <p className="font-montserrat font-regular text-sm text-white">{description}</p>
+          <p className="text-sm text-white font-montserrat font-regular">{description}</p>
         </div>
-        <audio ref={audioRef} loop  src={soundSrc} />
+        
+        <audio ref={audioRef} loop  src={soundSrc} preload="none"/>
+        
         <Image
           className=" min-w-[100px] h-[100px] rounded-[50%]"
           width={100}

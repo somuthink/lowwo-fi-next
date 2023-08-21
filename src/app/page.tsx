@@ -12,7 +12,6 @@ export default async function Home() {
 
   const [cards, playlists] = await Promise.all([getCards(), getPlaylists()]);
   
-  console.log(cards , playlists)
 
   return (
 

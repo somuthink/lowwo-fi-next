@@ -69,7 +69,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
   };
 
   return (
-    <div className="flex flex-col max-w-[1110px] w-[70%] max-sm:w-[90%] h-[40%] gap-2 mx-[30px]">
+    <div className="flex flex-col max-w-[1110px] w-[70%] max-sm:w-[75%] h-[40%] gap-2 mx-[30px]">
       <Script
         async
         id="soundcloud-script"
@@ -94,11 +94,11 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           ))}
         </Slider>
       )}
-
+      
       {mode === "custom" && (
-        <div className="flex content-center items-center justify-center h-[438px] w-2/4">
+        <div className="flex content-center items-center justify-center h-[400px] w-2/4">
 
-          <p className=" text-white"> Work in progress 🚧 </p>
+          <p className="text-white "> Work in progress 🚧 </p>
         </div>
       )}
 
