@@ -69,7 +69,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
   };
 
   return (
-    <div className="flex flex-col max-w-[1110px] w-[70%] max-sm:w-[75%] h-[40%] gap-2 mx-[30px]">
+    <div className="relative flex flex-col max-w-[1110px] w-[70%] max-sm:w-[75%] h-[40%] gap-2 mx-[30px]">
       <Script
         async
         id="soundcloud-script"
@@ -94,10 +94,9 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           ))}
         </Slider>
       )}
-      
+
       {mode === "custom" && (
         <div className="flex content-center items-center justify-center h-[400px] w-2/4">
-
           <p className="text-white "> Work in progress 🚧 </p>
         </div>
       )}
@@ -109,7 +108,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
             className="RangeContainer"
             whileTap={{ scale: 0.87 }}
             whileHover={{ y: 4 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
           >
             <input
               type="range"
@@ -130,7 +129,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           flex content-center items-center h-[30px] px-[18px]"
           whileTap={{ scale: 0.87 }}
           whileHover={{ y: 4 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={() => setMode("collection")}
         >
           <BsCollectionFill size={15} color="white" />
@@ -143,7 +142,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           flex content-center items-center h-[30px] px-[18px]"
           whileTap={{ scale: 0.87 }}
           whileHover={{ y: 4 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
           onClick={() => setMode("custom")}
         >
           <MdOutlinePlaylistPlay size={18} color="white" />

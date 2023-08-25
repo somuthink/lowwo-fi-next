@@ -1,8 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { motion, spring } from "framer-motion";
-import { MdMenu } from "react-icons/md";
 import { Header } from "./header";
 import { MotionCarousel } from "./MotionCarousel";
 import { BackgroundVideoComponent } from "./Background";
@@ -19,23 +17,24 @@ export const Player = ({
 }) => {
   const [link, setLink] = useState("");
   const [usebackgroundVideo, setUseBackgroundVideo] = useState(true);
-  const [menuActive, setMenuActive] = useState(false);
-
-  const toggleSwitch = () => setUseBackgroundVideo(!usebackgroundVideo);
+  const [focusMode, setFocusMode] = useState(false);
 
   return (
     <>
-      <Header />
+      <Header
+        useBackgroundVideo={usebackgroundVideo}
+        setUseBackgroundVideo={setUseBackgroundVideo}
+        focusMode={focusMode}
+        setFocusMode={setFocusMode}
+      />
       <div className="flex flex-col  gap-1 mt-[2%] max-sm:mt-[2%]">
-
-        <MusicWidgets playlists={playlists} />
-
-
-
-
-
+        <div className={focusMode? "hidden" : "visible"}>
+          <MusicWidgets playlists={playlists} />
+        </div>
         <MyGlobalContext.Provider value={{ link, setLink }}>
-          <MotionCarousel cards={cards} />
+          <div className={focusMode ? "hidden" : "visible"}>
+            <MotionCarousel cards={cards} />
+          </div>
           {usebackgroundVideo && <BackgroundVideoComponent />}
         </MyGlobalContext.Provider>
       </div>

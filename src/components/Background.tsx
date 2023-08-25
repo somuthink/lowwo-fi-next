@@ -16,7 +16,7 @@ export const BackgroundVideoComponent = () => {
 
   return (
     <motion.div
-    className="z-[-1]"
+    className="z-[-1] h-full"
       key={link}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -24,7 +24,7 @@ export const BackgroundVideoComponent = () => {
     >
     
       <video ref={videoRef} loop autoPlay muted
-        className="absolute z-[-1] top-0 left-0 w-[100%] h-[100%] object-cover"
+        className="absolute z-[-1] top-0 left-0 w-full h-full object-cover"
         >
         
         <source src={link} type="video/mp4" />

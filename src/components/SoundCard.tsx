@@ -7,9 +7,6 @@ import Image from "next/image";
 import { CardProps } from "@/interfaces/Props";
 import MyGlobalContext from "@/contexts/linkContext";
 
-
-
-
 export const SoundCard = ({
   title,
   description,
@@ -60,7 +57,6 @@ export const SoundCard = ({
 
   // Mouse wheel event handler
   const wheel = (e: any) => {
-
     const delta = e.deltaY * -1;
     let newVolume = audioRef.current!.volume;
 
@@ -89,6 +85,7 @@ export const SoundCard = ({
   // Range input change event handler
   const rangevol = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = Number(event.target.value);
+
     if (!audioStatus) {
       PlayPause();
     }
@@ -100,9 +97,16 @@ export const SoundCard = ({
     audioRef.current!.volume = newVolume;
   };
 
+  const scroll_control = ( variant : boolean ) => {
+    const html = document.querySelector("html");
+    if (html) {
+      html.style.overflow = variant? "auto" : "hidden";
+    }
+   }
+
   // Animation Variants
   const Animations = {
-    Container: {
+    Card: {
       show: { scale: audioStatus ? 0.98 : 1, y: hover ? 40 : 0 },
       hide: { scale: 1 },
     },
@@ -122,7 +126,7 @@ export const SoundCard = ({
       show: {
         opacity: hover ? 1 : 0,
         y: hover ? 0 : 30,
-      }
+      },
     },
   };
 
@@ -136,10 +140,7 @@ export const SoundCard = ({
   };
 
   return (
-    <div
-      onClick={() => {setHover(!hover)}}
-      className="flex-col "
-    >
+    <div className="flex-col ">
       {/* Range Input */}
       <motion.div
         className="RangeContainer w-160 absolute z-0. ml-5"
@@ -159,16 +160,18 @@ export const SoundCard = ({
         />
       </motion.div>
 
-
       {/* Sound Card */}
       <motion.div
         className="bg-black bg-opacity-40 backdrop-blur-[11px] 
                     rounded-[25px] border-2 border-solid border-[rgba(255,255,255,0.1)] 
                     inline-flex  py-[9px] px-[18px] items-center gap-x-5 gap-y-6 h-[140px] min-w-[400px] max-w-[415px] mt-1 mb-10"
         onWheel={wheel}
-        variants={Animations.Container}
+        onMouseEnter={ () => {scroll_control(false)}}
+        onMouseLeave={ () => {scroll_control(true)}}
+        variants={Animations.Card}
         animate={"show"}
         initial={"hide"}
+        whileHover={"hover"}
         transition={{}}
       >
         <div className="flex flex-col items-start flex-grow order-2 ">
@@ -176,17 +179,22 @@ export const SoundCard = ({
             key={vol}
             className="text-xl font-semibold text-white font-montserrat"
             variants={Animations.Title}
+            onClick={() => {
+              setHover(!hover);
+            }}
             animate={"show"}
             initial="hide"
             transition={{ type: "spring", stiffness: 500 }}
           >
             {changeTitle()}
           </motion.p>
-          <p className="text-sm text-white font-montserrat font-regular">{description}</p>
+          <p className="text-sm text-white font-montserrat font-regular">
+            {description}
+          </p>
         </div>
-        
-        <audio ref={audioRef} loop  src={soundSrc} preload="none"/>
-        
+
+        <audio ref={audioRef} loop src={soundSrc} preload="none" />
+
         <Image
           className=" min-w-[100px] h-[100px] rounded-[50%]"
           width={100}
@@ -199,5 +207,4 @@ export const SoundCard = ({
       </motion.div>
     </div>
   );
-
 };
