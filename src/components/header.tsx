@@ -4,7 +4,7 @@ import { useState, Dispatch, SetStateAction } from "react";
 import { motion } from "framer-motion";
 import { MdMenu } from "react-icons/md";
 import { Switch } from "./ui/Switch";
-
+import { LinksModal } from "./LinksModal";
 interface HeaderProps {
   useBackgroundVideo: boolean;
   setUseBackgroundVideo: Dispatch<SetStateAction<boolean>>;
@@ -18,7 +18,8 @@ export const Header = ({
   focusMode,
   setFocusMode,
 }: HeaderProps) => {
-  const [showMenu, SetShowMenu] = useState<boolean>(false);
+  const [showMenu, setShowMenu] = useState<boolean>(false);
+  const [showLinks, setShowLinks] = useState<boolean>(false);
 
   return (
     <>
@@ -59,7 +60,7 @@ export const Header = ({
                 ease: "easeOut",
               }}
               onClick={() => {
-                SetShowMenu(!showMenu);
+                setShowMenu(!showMenu);
               }}
             >
               <MdMenu size="25" color="white" />
@@ -78,7 +79,7 @@ export const Header = ({
             ease: "easeOut",
           }}
           onClick={() => {
-            SetShowMenu(!showMenu);
+            setShowMenu(!showMenu);
           }}
         >
           <MdMenu size="25" color="white" />
@@ -115,11 +116,12 @@ export const Header = ({
               setState={setUseBackgroundVideo}
             />
           </div>
-          <hr className="my-1 w-[9rem] opacity-20"></hr>
-          <p className="text-sm font-semibold text-white font-montserrat">Socials</p>
+          <hr className="my-1 w-[9rem] opacity-20" data-content="OR"></hr>
+          <p className="text-sm font-semibold text-white font-montserrat" onClick={() => setShowLinks(true)}>Links</p>
         </motion.div>
       )}
-
+      { showLinks && (<LinksModal setShowLinks={setShowLinks}/>)}
+      
     </>
   );
 };
