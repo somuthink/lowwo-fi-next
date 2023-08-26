@@ -1,23 +1,28 @@
-"use client";
-
 import { motion } from "framer-motion";
-import { Dispatch, SetStateAction} from "react"
+import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 import { CardProps } from "@/interfaces/Props";
 
-export const LinksModal = ({setShowLinks} : { setShowLinks : Dispatch<SetStateAction<boolean>>}) => {
-  // Volume state
-
+export const LinksModal = ({
+  setShowLinks,
+}: {
+  setShowLinks: Dispatch<SetStateAction<boolean>>;
+}) => {
   return (
-    <div
-      className="bg-black bg-opacity-40 backdrop-blur-[11px] 
-                    w-full h-[100vh]
-                    py-5 px-7 gap-4
-                    absolute  top-0 left-0 bottom-0 right-0 z-[10] flex flex-col  items-center justify-center "
+    <motion.aside
+      className="fixed inset-0 z-[10] flex flex-col items-center justify-center bg-black bg-opacity-40 backdrop-blur-[11px]"
+      initial={{ y: -50 }}
+      animate={{ opacity: 1, scale: 1, y: 0, x: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 700,
+        damping: 15,
+        duration: 0.5,
+      }}
     >
-      <motion.div whileTap={{ scale: 0.87 }} whileHover={{ scale: 1.1 }}>
+      <motion.figure whileTap={{ scale: 0.87 }} whileHover={{ scale: 1.1 }}>
         <Image
-          className=" min-w-[100px] h-[100px] rounded-[50%]"
+          className="w-24 h-24 rounded-full"
           width={100}
           height={100}
           onClick={() => setShowLinks(false)}
@@ -25,62 +30,76 @@ export const LinksModal = ({setShowLinks} : { setShowLinks : Dispatch<SetStateAc
           alt="card-img"
           loading="lazy"
         />
-      </motion.div>
+      </motion.figure>
 
-      <div className="flex flex-row items-start gap-5">
-        <div className="flex flex-col items-center justify-center">
-          <p className="mb-1 text-xl font-semibold text-white font-montserrat">
+      <section className="flex flex-row items-start gap-5">
+        <article className="flex flex-col items-center justify-center text-center">
+          <h1 className="text-xl font-semibold text-white font-montserrat">
             Lowwo-fi
-          </p>
+          </h1>
           <a
             href="https://github.com/somuthink"
-            className="text-sm text-slate-300 font-montserrat font-regular"
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             GitHub Repo
           </a>
           <a
             href="https://t.me/somuthink"
-            className="text-sm text-slate-300 font-montserrat font-regular"
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Instruction
           </a>
           <a
             href="https://t.me/somuthink"
-            className="text-sm text-slate-300 font-montserrat font-regular"
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             TikTok
           </a>
-        </div>
-        <div className="flex flex-col items-center justify-center">
-          <p className="mb-1 text-xl font-semibold text-white font-montserrat">
+        </article>
+        <article className="flex flex-col items-center justify-center text-center">
+          <h1 className="text-xl font-semibold text-white font-montserrat">
             My
-          </p>
+          </h1>
           <a
             href="https://github.com/somuthink"
-            className="text-sm text-slate-300 font-montserrat font-regular "
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             GitHub
           </a>
           <a
             href="https://t.me/somuthink"
-            className="text-sm text-slate-300 font-montserrat font-regular"
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Telegram
           </a>
           <a
             href="https://t.me/somuthink"
-            className="text-sm text-slate-300 font-montserrat font-regular"
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Discord
           </a>
           <a
             href="https://t.me/somuthink"
-            className="text-sm text-center text-slate-300 font-montserrat font-regular"
+            className="text-slate-300 font-montserrat font-regular"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             Discord Server
           </a>
-        </div>
-      </div>
-    </div>
+        </article>
+      </section>
+    </motion.aside>
   );
 };
