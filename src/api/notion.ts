@@ -46,8 +46,14 @@ export const getCards = async ()  => {
 
 
 
-    const response: QueryDatabaseResponse = await notion.databases.query({
+    const response = await notion.databases.query({
       database_id: `${databaseId}`,
+      sorts: [
+        {
+          timestamp: "created_time", // Замените 'Name' на свойство, по которому вы упорядочиваете в Notion
+          direction: 'ascending', // или 'descending', в зависимости от вашего предпочтения
+        },
+      ],
     });
 
     const items: CardProps[] = response.results
@@ -72,6 +78,14 @@ export const getPlaylists = async ()  => {
     Title: { title: { plain_text: string }[] };
   }
 
+  function shuffleArray(array: PlaylistProps[] ) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
   const normalize = (item: DatabaseObjectResponse) => {
     const prop: properties = item.properties as any;
 
@@ -90,15 +104,21 @@ export const getPlaylists = async ()  => {
   try {
 
 
-    const response: QueryDatabaseResponse = await notion.databases.query({
+    const response = await notion.databases.query({
       database_id: `${databaseId}`,
+      sorts: [
+        {
+          timestamp: "created_time", // Замените 'Name' на свойство, по которому вы упорядочиваете в Notion
+          direction: 'ascending', // или 'descending', в зависимости от вашего предпочтения
+        },
+      ],
     });
 
     const items: PlaylistProps[] = response.results
       .map((item) => normalize(item as DatabaseObjectResponse))
       .filter((item) => item !== null) as PlaylistProps[];
 
-    return items;
+    return shuffleArray(items);
 
   } catch (error) {
     console.error(error);
