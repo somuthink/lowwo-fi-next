@@ -78,13 +78,7 @@ export const getPlaylists = async ()  => {
     Title: { title: { plain_text: string }[] };
   }
 
-  function shuffleArray(array: PlaylistProps[] ) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
+
 
   const normalize = (item: DatabaseObjectResponse) => {
     const prop: properties = item.properties as any;
@@ -118,7 +112,7 @@ export const getPlaylists = async ()  => {
       .map((item) => normalize(item as DatabaseObjectResponse))
       .filter((item) => item !== null) as PlaylistProps[];
 
-    return shuffleArray(items);
+    return items;
 
   } catch (error) {
     console.error(error);

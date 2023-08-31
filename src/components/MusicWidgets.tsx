@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Script from "next/script";
 import { motion } from "framer-motion";
 import { BsCollectionFill } from "react-icons/bs";
@@ -21,6 +21,24 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
 
   // Number of SoundCloud playlists
   const NumOfPlaylists = playlists.length;
+
+
+  function shuffleArray(array: PlaylistProps[] ) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
+
+  const [shuffledPlaylists, setShuffledPlaylists] = useState<PlaylistProps[]>([]);
+
+  // Shuffle the playlists array when the component is mounted
+  useEffect(() => {
+    const shuffled = shuffleArray(playlists);
+    setShuffledPlaylists(shuffled);
+  }, []); // Empty dependency array means this effect runs once on mount
+
 
   const settings = {
     dots: false,
@@ -79,7 +97,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
       {/* Music mode: collection */}
       {mode === "collection" && (
         <Slider {...settings}>
-          {playlists.map((playlist, id) => (
+          {shuffledPlaylists.map((playlist, id) => (
             <iframe // Provide a unique key for each iframe
               key={id}
               ref={handleWidgetRef}
