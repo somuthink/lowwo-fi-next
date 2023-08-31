@@ -27,6 +27,8 @@ body {
   justify-content: center;
   align-items: center;
   height: 30px;
+
+  width: 150px;
   
 
   padding: 0px 8px;
@@ -40,6 +42,7 @@ body {
   
   }
   input[type="range"] {
+    width: 150px;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
@@ -52,6 +55,7 @@ body {
   }
   
   input[type="range"]::-webkit-slider-runnable-track {
+    width: 150px;
     background: rgba(0, 0, 0, 0);
   }
   
@@ -66,6 +70,7 @@ body {
   }
   
   input[type="range"]::-moz-range-track {
+    width: auto;
     background: rgba(0, 0, 0, 0);
   }
   
@@ -75,8 +80,8 @@ body {
     margin-top: 2spx;
     border-radius: 0.3rem;
     background-color: rgba(255, 255, 255, 0.843);
-    height: 0.9rem;
-    width: 0.9rem;
+    height: 0.8rem;
+    width: 0.8rem;
 }
 
 

@@ -107,7 +107,7 @@ export const SoundCard = ({
   // Animation Variants
   const Animations = {
     Card: {
-      show: { scale: audioStatus ? 0.98 : 1, y: hover ? 40 : 0 },
+      show: { scale: audioStatus ? 0.98 : 1, y: hover ? 10 : 0 },
       hide: { scale: 1 },
     },
 
@@ -140,10 +140,10 @@ export const SoundCard = ({
   };
 
   return (
-    <div className="flex-col ">
+    <div className="inline-flex flex-col ">
       {/* Range Input */}
       <motion.div
-        className="RangeContainer w-160 absolute z-0. ml-5"
+        className="z-0 mb-0 ml-5 RangeContainer "
         variants={Animations.RangeInput}
         animate={"show"}
         whileTap={{ scale: 0.87 }}
