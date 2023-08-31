@@ -12,11 +12,13 @@ export const metadata: Metadata = {
   title: "Lowwo-Fi",
   description:
     "Craft Your Unique Ambience: Explore Lofi Playlists and a Variety of Customizable Sounds 🎶🍄",
-  other: {
-    "google-site-verification": "cCUEuFtwrLIcYWMjmrJOY1vK3nMYoNTj-_glScMreeQ",
-    "yandex-verification": "812d9f170aeedccf",
-  },
+  keywords: ['lowwo-fi','lowwo', 'ambience', 'lo-fi', 'lofi'],
+  verification: {
+    google: 'cCUEuFtwrLIcYWMjmrJOY1vK3nMYoNTj-_glScMreeQ',
+    yandex: '812d9f170aeedccf',
+  }
 };
+
 
 export default function RootLayout({
   children,

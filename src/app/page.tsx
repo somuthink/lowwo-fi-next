@@ -7,7 +7,11 @@ export default async function Home() {
 
   return (
     <main className="overflow-hidden">
-      <Script async src="https://www.googletagmanager.com/gtag/js?id=G-X8LW8FSVPY" strategy="afterInteractive"></Script>
+      <Script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id=G-X8LW8FSVPY"
+        strategy="afterInteractive"
+      ></Script>
       <Script strategy="afterInteractive">
         {`  window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
