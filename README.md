@@ -1,3 +1,5 @@
-<img width="40" alt="GIF" src="readme-assets/mushy-logo.png">
 
-# Lowwo-Fi
+
+#  [Lowwo fi](https://lowwo.netlify.app)
+
+<img  src="readme-assets/banner.png">
