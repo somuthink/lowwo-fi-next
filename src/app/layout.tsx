@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     "Craft Your Unique Ambience: Explore Lofi Playlists and a Variety of Customizable Sounds 🎶🍄",
   other: {
     "google-site-verification": "cCUEuFtwrLIcYWMjmrJOY1vK3nMYoNTj-_glScMreeQ",
-    "yandex-verification": "321d444d40c45309",
+    "yandex-verification": "812d9f170aeedccf",
   },
 };
 
