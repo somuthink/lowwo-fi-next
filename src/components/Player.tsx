@@ -19,18 +19,7 @@ export const Player = ({
   const [usebackgroundVideo, setUseBackgroundVideo] = useState(true);
   const [focusMode, setFocusMode] = useState(false);
 
-  function shuffleArray(array: PlaylistProps[] ) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
 
-
-  useEffect(() => {
-    const ShufflesPlaylist = shuffleArray(playlists)
-  }),[];
   return (
     <>
       <Header
