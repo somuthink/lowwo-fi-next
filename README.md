@@ -1,7 +1,3 @@
-
-
-
-
 <div align="center">
     <h1>
         <a href="https://www.triumphmayflowerclub.com/">lowwo.netlify.app</a>
