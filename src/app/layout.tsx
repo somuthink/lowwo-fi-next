@@ -16,6 +16,10 @@ export const metadata: Metadata = {
   verification: {
     google: 'cCUEuFtwrLIcYWMjmrJOY1vK3nMYoNTj-_glScMreeQ',
     yandex: '812d9f170aeedccf',
+    other: {
+      "msvalidate.01" : "4ADA484050BEBD3C5D0B1A03C6048010"
+    }
+
   }
 };
 
