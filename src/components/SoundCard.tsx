@@ -37,7 +37,6 @@ export const SoundCard = ({
     if (audioRef.current) {
       audioRef.current.volume = 0.4;
     }
-
   }, []);
 
   // Play/Pause audio function
@@ -97,12 +96,12 @@ export const SoundCard = ({
     audioRef.current!.volume = newVolume;
   };
 
-  const scroll_control = ( variant : boolean ) => {
+  const scroll_control = (variant: boolean) => {
     const html = document.querySelector("html");
     if (html) {
-      html.style.overflow = variant? "auto" : "hidden";
+      html.style.overflow = variant ? "auto" : "hidden";
     }
-   }
+  };
 
   // Animation Variants
   const Animations = {
@@ -140,7 +139,7 @@ export const SoundCard = ({
   };
 
   return (
-    <div className="inline-flex flex-col ">
+    <article className="inline-flex flex-col ">
       {/* Range Input */}
       <motion.div
         className="z-0 mb-0 ml-5 RangeContainer "
@@ -161,13 +160,17 @@ export const SoundCard = ({
       </motion.div>
 
       {/* Sound Card */}
-      <motion.div
+      <motion.section
         className="bg-black bg-opacity-40 backdrop-blur-[11px] 
-                    rounded-[25px] border-2 border-solid border-[rgba(255,255,255,0.1)] 
-                    inline-flex  py-[9px] px-[18px] items-center gap-x-5 gap-y-6 h-[140px] min-w-[400px] max-w-[415px] mt-1 mb-10"
+                  rounded-[25px] border-2 border-solid border-[rgba(255,255,255,0.1)] 
+                  inline-flex  py-[9px] px-[18px] items-center gap-x-5 gap-y-6 h-[140px] min-w-[400px] max-w-[415px] mt-1 mb-10"
         onWheel={wheel}
-        onMouseEnter={ () => {scroll_control(false)}}
-        onMouseLeave={ () => {scroll_control(true)}}
+        onMouseEnter={() => {
+          scroll_control(false);
+        }}
+        onMouseLeave={() => {
+          scroll_control(true);
+        }}
         variants={Animations.Card}
         animate={"show"}
         initial={"hide"}
@@ -175,7 +178,7 @@ export const SoundCard = ({
         transition={{}}
       >
         <div className="flex flex-col items-start flex-grow order-2 ">
-          <motion.p
+          <motion.h1
             key={vol}
             className="text-xl font-semibold text-white font-montserrat"
             variants={Animations.Title}
@@ -187,7 +190,7 @@ export const SoundCard = ({
             transition={{ type: "spring", stiffness: 500 }}
           >
             {changeTitle()}
-          </motion.p>
+          </motion.h1>
           <p className="text-sm text-white font-montserrat font-regular">
             {description}
           </p>
@@ -204,7 +207,7 @@ export const SoundCard = ({
           onClick={PlayPause}
           loading="lazy"
         />
-      </motion.div>
-    </div>
+      </motion.section>
+    </article>
   );
 };

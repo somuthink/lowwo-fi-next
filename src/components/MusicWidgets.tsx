@@ -87,7 +87,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
   };
 
   return (
-    <div className="relative flex flex-col max-w-[1110px] w-[70%] max-sm:w-[75%] h-[40%] gap-2 mx-[30px]">
+<section className="relative flex flex-col max-w-[1110px] w-[70%] max-sm:w-[75%] h-[40%] gap-2 mx-[30px]">
       <Script
         async
         id="soundcloud-script"
@@ -106,6 +106,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
               width="300"
               src={playlist.link}
               loading="lazy"
+              title={playlist.title} // Add a title attribute for accessibility
             >
               {playlist.title}
             </iframe>
@@ -140,7 +141,7 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
             />
           </motion.div>
         )}
-        <motion.div
+        <motion.button // Use a button element for better semantics
           className="bg-black bg-opacity-40 backdrop-blur-[11px] 
           rounded-[25px] border-2 border-solid border-[rgba(255,255,255,0.1)]
           
@@ -151,9 +152,9 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           onClick={() => setMode("collection")}
         >
           <BsCollectionFill size={15} color="white" />
-        </motion.div>
+        </motion.button>
 
-        <motion.div
+        <motion.button // Use a button element for better semantics
           className="bg-black bg-opacity-40 backdrop-blur-[11px] 
           rounded-[25px] border-2 border-solid border-[rgba(255,255,255,0.1)]
           
@@ -164,8 +165,8 @@ export const MusicWidgets = ({ playlists }: { playlists: PlaylistProps[] }) => {
           onClick={() => setMode("custom")}
         >
           <MdOutlinePlaylistPlay size={18} color="white" />
-        </motion.div>
+        </motion.button>
       </motion.div>
-    </div>
+    </section>
   );
 };
