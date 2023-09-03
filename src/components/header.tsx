@@ -29,7 +29,20 @@ export const Header = ({
         }`}
       >
         <div className="flex items-center justify-between w-full px-10 py-4 ">
-          <p className="text-white">Logo</p>
+          <motion.p
+            className="font-semibold text-white font-montserrat"
+            title="Copy the text for sharing website with others"
+            onClick={() =>
+              navigator.clipboard.writeText("Create your perfect ambience on lowwo.netlify.app 🍄🎶")
+            }
+            whileHover={{ scale: 1.1 }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut",
+            }}
+          >
+            Share the site
+          </motion.p>
           <nav className="flex flex-row items-center justify-center gap-4">
             <a
               href="https://boosty.to/somuthink/single-payment/donation/452569/target?share=target_link"
@@ -70,20 +83,20 @@ export const Header = ({
       </header>
       {focusMode && (
         <div className="flex items-end justify-end w-full h-16 px-10 py-4">
-        <motion.button
-          className={`items-center content-center justify-center inline h-8 px-4 `}
-          whileTap={{ scale: 0.87 }}
-          whileHover={{ scale: 1.1 }}
-          transition={{
-            duration: 0.3,
-            ease: "easeOut",
-          }}
-          onClick={() => {
-            setShowMenu(!showMenu);
-          }}
-        >
-          <MdMenu size="25" color="white" />
-        </motion.button>
+          <motion.button
+            className={`items-center content-center justify-center inline h-8 px-4 `}
+            whileTap={{ scale: 0.87 }}
+            whileHover={{ scale: 1.1 }}
+            transition={{
+              duration: 0.3,
+              ease: "easeOut",
+            }}
+            onClick={() => {
+              setShowMenu(!showMenu);
+            }}
+          >
+            <MdMenu size="25" color="white" />
+          </motion.button>
         </div>
       )}
       {showMenu && (
@@ -117,11 +130,15 @@ export const Header = ({
             />
           </div>
           <hr className="my-1 w-[9rem] opacity-20" data-content="OR"></hr>
-          <p className="text-sm font-semibold text-white font-montserrat" onClick={() => setShowLinks(true)}>Links</p>
+          <p
+            className="text-sm font-semibold text-white font-montserrat"
+            onClick={() => setShowLinks(true)}
+          >
+            Links
+          </p>
         </motion.div>
       )}
-      { showLinks && (<LinksModal setShowLinks={setShowLinks}/>)}
-      
+      {showLinks && <LinksModal setShowLinks={setShowLinks} />}
     </>
   );
 };
